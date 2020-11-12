@@ -186,3 +186,19 @@ There is such difference
 <    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 11 = 11
 ---
 >    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 12 = 2^2 x 3
+					
+20:23:39-11-12-2020
+There is such difference
+0a1
+>    Logo W11/K2
+2,5c3
+< 
+< Exiting via interrupt: 15
+< 
+< aw Informatyki
+---
+> Katedra Podstaw Informatyki
+73c71
+<    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 11 = 11
+---
+>    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 12 = 2^2 x 3

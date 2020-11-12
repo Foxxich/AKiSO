@@ -124,3 +124,49 @@ There is such difference
 ---
 >    [23]Ministerstwo Edukacji Narodowej [24]Politechnika Wrocławska [25]Wydział PPT Politechniki Wrocławskiej [26]Kalendarz Akademicki Politechniki Wrocławskiej [27]System Edukacja Politechniki
 >    Wrocławskiej [28]Poczta Akademicka Politechniki Wrocławskiej
+					
+20:19:54-11-12-2020
+There is such difference
+39c39,40
+<    Pomieszczenia Katedry Podstaw Informatyki (K68W11D03) znajdują sie w budynku D-1 Politechniki Wrocławskiej (pl. Grunwaldzki 13).
+---
+>    Pomieszczenia Katedry Podstaw Informatyki (K68W11D03) znajdują sie w
+>    budynku D-1 Politechniki Wrocławskiej (pl. Grunwaldzki 13).
+41c42,43
+<    W Katedrze prowadzimy badania naukowe w dziedzinie nauk ścisłych i przyrodniczych w dyscyplinach informatyka oraz matematyka.
+---
+>    W Katedrze prowadzimy badania naukowe w dziedzinie nauk ścisłych i
+>    przyrodniczych w dyscyplinach informatyka oraz matematyka.
+43,47c45,56
+<    Głównymi obszarami naszych zainteresowań informatycznych są: Algorytmika, Kryptografia, Bezpieczeństwo Komputerowe i Optymalizacja Dyskretna.
+< 
+<    Badania matematyczne koncentrujemy głównie na Analizie Matematycznej, Matematyce Dyskretnej, Teorii Mnogości, Teorii Funkcji Rzeczywistych, Teorii Miary i Topologii.
+<    Opiekujemy się studiami informatycznymi pierwszego i drugiego stopnia na Wydziale Podstawowych Problemów Techniki. Na studiach drugiego stopnia prowadzimy dwie specjalności: Algorytmika (w
+<    języku polskim) i Bezpieczeństwo Komputerowe (w języku angielskim). Współpracujemy również w organizacji studiów drugiego stopnia Big Data Analytics.
+---
+>    Głównymi obszarami naszych zainteresowań informatycznych są:
+>    Algorytmika, Kryptografia, Bezpieczeństwo Komputerowe i Optymalizacja
+>    Dyskretna.
+> 
+>    Badania matematyczne koncentrujemy głównie na Analizie Matematycznej,
+>    Matematyce Dyskretnej, Teorii Mnogości, Teorii Funkcji Rzeczywistych,
+>    Teorii Miary i Topologii.
+>    Opiekujemy się studiami informatycznymi pierwszego i drugiego stopnia
+>    na Wydziale Podstawowych Problemów Techniki. Na studiach drugiego
+>    stopnia prowadzimy dwie specjalności: Algorytmika (w języku polskim) i
+>    Bezpieczeństwo Komputerowe (w języku angielskim). Współpracujemy
+>    również w organizacji studiów drugiego stopnia Big Data Analytics.
+52c61,63
+<        Nasz Dziekan podjął decyzję o zamianie tradycyjnego turnieju tenisowego WPPT turniejem brydżowym WPPT. Twierdzi, że woli brydża. Terminy i szczegóły pojawią się wkrótce na stronie Wydziału
+---
+>        Nasz Dziekan podjął decyzję o zamianie tradycyjnego turnieju
+>        tenisowego WPPT turniejem brydżowym WPPT. Twierdzi, że woli brydża.
+>        Terminy i szczegóły pojawią się wkrótce na stronie Wydziału
+62,63c73,76
+<    [23]Ministerstwo Edukacji Narodowej [24]Politechnika Wrocławska [25]Wydział PPT Politechniki Wrocławskiej [26]Kalendarz Akademicki Politechniki Wrocławskiej [27]System Edukacja Politechniki
+<    Wrocławskiej [28]Poczta Akademicka Politechniki Wrocławskiej
+---
+>    [23]Ministerstwo Edukacji Narodowej [24]Politechnika Wrocławska
+>    [25]Wydział PPT Politechniki Wrocławskiej [26]Kalendarz Akademicki
+>    Politechniki Wrocławskiej [27]System Edukacja Politechniki Wrocławskiej
+>    [28]Poczta Akademicka Politechniki Wrocławskiej

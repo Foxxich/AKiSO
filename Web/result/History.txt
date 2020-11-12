@@ -35,3 +35,30 @@
 <    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 11 = 11
 ---
 >    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 12 = 2^2 x 3
+0a1
+>    Logo W11/K2
+1a3,22
+> Katedra Podstaw Informatyki
+> Politechnika Wrocławska
+> 
+>    [1] ENG
+> 
+> Pasek nawigacyjny
+> 
+>      *
+>      * [2]Menu
+> 
+> Main menu
+> 
+>      * [3]O katedrze
+>      * [4]Kadra
+>      * [5]Dydaktyka
+>           + [6]Dla studentów
+>           + [7]Dla kandydatów
+>           + [8]Dla kadry
+>      * [9]Badania
+>           + [10]Seminaria
+50c71
+<    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 11 = 11
+---
+>    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 12 = 2^2 x 3

@@ -248,3 +248,9 @@ There is such difference
 <    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 11 = 11
 ---
 >    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 12 = 2^2 x 3
+18:08:09-11-14-2020
+There is such difference
+71c71
+<    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 11 = 11
+---
+>    Rozkład dzisiejszego dnia miesiąca na czynniki pierwsze: 14 = 2 x 7

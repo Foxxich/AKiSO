@@ -1,0 +1,103 @@
+#include <pthread.h> 
+#include <stdio.h> 
+#include <stdlib.h>  
+#include <stdbool.h>
+#include <string.h> 
+#include <unistd.h> 
+  
+// Number of rows and columns
+int sizeOfMatrix;
+int threadsC;
+
+//alokujemy pamiec na macierze
+int **matA; 
+int **matB; 
+int **matC; 
+
+int step_i = 0; 
+  
+void* multi(void* arg) 
+{ 
+    int core = step_i++; 
+    
+    while(core < sizeOfMatrix){
+        for (int j = 0; j < sizeOfMatrix; j++) { 
+        bool value = false;
+        for (int k = 0; k < sizeOfMatrix; k++)  
+        {
+            value = matA[core][k] && matB[k][j];
+            if(value)
+                break; 
+        }
+        matC[core][j] = value;
+    }
+    core = step_i++;
+    }
+} 
+  
+// Driver Code 
+int main() 
+{ 
+    printf("Give size : \n");
+    scanf("%d", &sizeOfMatrix);  
+    printf("Give number of threads : \n");
+    scanf("%d", &threadsC);
+
+    //sizeof - bierzemy typ podanej zmiennej
+    matA = (int **)malloc(sizeOfMatrix*sizeof(int *));
+    matB = (int **)malloc(sizeOfMatrix*sizeof(int *));
+    matC = (int **)malloc(sizeOfMatrix*sizeof(int *));
+    for (int i = 0; i < sizeOfMatrix; i++)
+    {
+        matA[i] = (int *)malloc(sizeOfMatrix*sizeof(int ));
+        matB[i] = (int *)malloc(sizeOfMatrix*sizeof(int ));
+        matC[i] = (int *)malloc(sizeOfMatrix*sizeof(int ));
+    }
+    
+
+    // Generating random values in matA and matB 
+    for (int i = 0; i < sizeOfMatrix; i++) { 
+        for (int j = 0; j < sizeOfMatrix; j++) { 
+            matA[i][j] = rand() % 2; 
+            matB[i][j] = rand() % 2; 
+        } 
+    } 
+  
+    // Displaying matA 
+    printf("Matrix A\n"); 
+    for (int i = 0; i < sizeOfMatrix; i++) { 
+        for (int j = 0; j < sizeOfMatrix; j++)  
+            printf("%d",matA[i][j]);        
+        printf("\n");
+    } 
+  
+    // Displaying matB 
+    printf("Matrix B\n");
+    for (int i = 0; i < sizeOfMatrix; i++) { 
+        for (int j = 0; j < sizeOfMatrix; j++)  
+            printf("%d",matB[i][j]);        
+        printf("\n");
+    } 
+  
+    // declaring four threads 
+    pthread_t threads[threadsC]; 
+  
+    // Creating four threads, each evaluating its own part 
+    for (int i = 0; i < threadsC; i++) { 
+        int* p; 
+        pthread_create(&threads[i], NULL, multi, (void*)(p)); 
+    } 
+  
+    // joining and waiting for all threads to complete 
+    for (int i = 0; i < threadsC; i++)  
+        pthread_join(threads[i], NULL);     
+  
+    // Displaying the result matrix 
+    printf("Multiplication of A and B\n"); 
+    for (int i = 0; i < sizeOfMatrix; i++) { 
+        for (int j = 0; j < sizeOfMatrix; j++)  
+            printf("%d",matC[i][j]);
+        printf("\n");
+    } 
+    return 0; 
+} 

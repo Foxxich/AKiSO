@@ -1,0 +1,111 @@
+Input
+Store Number //this is our limit of primary numbers
+Load Two //as we know, 2 is a primary number
+Output
+For1,  Load I //this is the first loop, where we compare i with Number.In C it would be (i;i<=Number;i++)
+       Subt Number
+       Skipcond 000 //checkup if i=Number
+        Jump END //if i=Number
+        Load I  //i!=Number
+        Add One //i++
+        Store I 
+        Load I
+        Store ResultI //make ResultI=I (it is useful in 1 division)
+        Load Zero
+        Store Save  //make Save=0 
+        Load I
+        Store Saver //make Saver=I (it is useful in 2 division)         
+        Jump Division1 //this method is used for finding i/2
+        
+Division1,   Load ResultI 
+    Subt    Two
+    Store   ResultI
+    Skipcond 800 //checkup if ResultI is > 0
+    Jump    Checkloop //if ResultI is < 0
+    Load    Save //if ResultI is > 0
+    Add One
+    Store   Save
+    Jump Division1
+
+IncrementI, Load    Save
+    Add     One
+    Store   Save
+    Load    ResultI
+    Subt    Two
+    Store   ResultI
+
+Checkloop, Load   ResultI
+    Skipcond 000 //check if ResultI is negative
+    Jump    IncrementI
+    Store ResultI
+    Clear
+  Load Two
+  Store J
+  Load J
+  Subt Save
+  Skipcond 400 //check if j>save, where save=i/2
+  Jump For2 //
+  Jump Division2  //this method is used for finding i%j
+
+For2,  Load Saver
+        Store I2Division //make I2Division equal to i (after operations on I2Division)
+		Load Save
+      Subt J
+        Skipcond 800 //check if i/2 > j
+        Jump Checking //if i/2 <= j
+        Jump Division2 //if i/2 > j
+
+Division2, Load Saver
+         Store I2Division //make I2Division=saver=i
+         Load J
+         Jump Equal
+Equal,   Load I2Division //if i>j, then i-j
+          Subt J
+         Store I2Division
+         Subt J
+         Skipcond 800 //check if i>j
+         Jump Step 
+         Jump Equal
+
+         
+Step,   Load I2Division
+         Subt J
+         Skipcond 400 //check if i=j
+         Jump Else //if i<j
+If,     Load Calculator //if i=j
+         Add One
+         Store Calculator //Calculator is used for describing numbers which are like this i % j = 0 
+        Load J // j++
+        Add One
+        Store J
+       Jump For2 //return to 2 loop for
+
+Else,    Load J
+      Add One //j++
+        Store J
+        Jump For2
+END, Halt
+
+Checking, Load Calculator //check up if i % j was equal to 0
+          Skipcond 800
+          Jump Primary // if i % j !=0
+          Jump ToStart //i % j = 0
+ToStart,  Load Zero
+          Store Calculator
+          Jump For1
+        
+Primary, Load I
+      output
+        Jump For1
+
+Number, DEC 0
+One, DEC 1
+Zero, DEC 0
+I, DEC 2
+J, DEC 2
+Two, DEC 2
+Save, DEC 0
+I2Division, DEC 0
+ResultI, DEC 0
+Saver, DEC 0
+Calculator, DEC 0

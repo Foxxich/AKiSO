@@ -1,0 +1,215 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <math.h>
+//changed int to va_list
+void start(va_list a, ...)
+{ 
+   // va_start
+   char *p = (char *) &a + sizeof a;
+}
+//changed int to va_list
+void arguments(va_list a, ...)
+{ 
+	// va_start
+   char *p = (char *) &a + sizeof a;
+   // va_arg
+   int i1 = *((int *)p);
+   p += sizeof (int);
+
+   // va_arg
+   long i2 = *((long *)p);
+   p += sizeof (long);
+}
+
+void end(char *p)
+{ 
+   // va_start
+   *p = NULL;
+}
+
+char* itoa(int num, char* buffer, int base) {
+    int curr = 0;
+ 
+    if (num == 0) {
+        // Base case
+        buffer[curr++] = '0';
+        buffer[curr] = '\0';
+        return buffer;
+    }
+ 
+    int num_digits = 0;
+ 
+    if (num < 0) {
+        if (base == 10) {
+            num_digits ++;
+            buffer[curr] = '-';
+            curr ++;
+            // Make it positive and finally add the minus sign
+            num *= -1;
+        }
+        else
+            // Unsupported base. Return NULL
+            return NULL;
+    }
+ 
+    num_digits += (int)floor(log(num) / log(base)) + 1;
+ 
+    // Go through the digits one by one
+    // from left to right
+    while (curr < num_digits) {
+        // Get the base value. For example, 10^2 = 1000, for the third digit
+        int base_val = (int) pow(base, num_digits-1-curr);
+ 
+        // Get the numerical value
+        int num_val = num / base_val;
+ 
+        char value = num_val + '0';
+        buffer[curr] = value;
+ 
+        curr ++;
+        num -= base_val * num_val;
+    }
+    buffer[curr] = '\0';
+    return buffer;
+}
+
+int myscanf(char * str, ...)
+{
+    va_list vl;
+    int i = 0, j=0, ret = 0;
+    char buff[100] = {0}, tmp[20], c;
+    char *out_loc;
+    while(c != '\n') 
+    {
+        if (fread(&c, 1, 1, stdin)) 
+        {
+ 	       buff[i] = c;
+ 	       i++;
+ 	    }
+ 	}
+ 	start( vl, str );
+ 	i = 0;
+ 	while (str && str[i])
+ 	{
+ 	    if (str[i] == '%') 
+ 	    {
+ 	       i++;
+ 	       switch (str[i]) 
+ 	       {
+ 	           case 'c': 
+ 	           {
+	 	           *(char *)arguments( vl, char* ) = buff[j];
+	 	           j++;
+	 	           ret ++;
+	 	           break;
+ 	           }
+ 	           case 'd': 
+ 	           {
+	 	           *(int *)arguments( vl, int* ) =strtol(&buff[j], &out_loc, 10);
+	 	           j+=out_loc -&buff[j];
+	 	           ret++;
+	 	           break;
+ 	            }
+ 	            case 'x': 
+ 	            {
+	 	           *(int *)arguments( vl, int* ) =strtol(&buff[j], &out_loc, 16);
+	 	           j+=out_loc -&buff[j];
+	 	           ret++;
+	 	           break;
+ 	            }
+				case 'b': 
+ 	            {
+	 	           *(int *)arguments( vl, int* ) =strtol(&buff[j], &out_loc, 2);
+	 	           j+=out_loc -&buff[j];
+	 	           ret++;
+	 	           break;
+ 	            }
+ 	        }
+ 	    } 
+ 	    else 
+ 	    {
+ 	        buff[j] =str[i];
+            j++;
+        }
+        i++;
+    }
+    end(vl);
+    return ret;
+}
+
+//va_arg changed to arguments
+
+int myprintf (char * str, ...)
+{
+	va_list vl;
+	int i = 0, j=0;
+		char buff[100]={0}, tmp[20];
+		va_start( vl, str ); 
+		while (str && str[i])
+		{
+		  	if(str[i] == '%')
+		  	{
+ 		    i++;
+ 		    switch (str[i]) 
+ 		    {
+	 		    case 'c': 
+	 		    {
+	 		        buff[j] = (char)arguments( vl, int );
+	 		        j++;
+	 		        break;
+	 		    }
+	 		    case 'd': 
+	 		    {
+	 		        itoa(arguments( vl, int ), tmp, 10);
+	 		        strcpy(&buff[j], tmp);
+	 		        j += strlen(tmp);
+		           break;
+		        }
+		        case 'x': 
+		        {
+		           itoa(arguments( vl, int ), tmp, 16);
+		           strcpy(&buff[j], tmp);
+		           j += strlen(tmp);
+		           break;
+		        }
+				case 'b': 
+		        {
+		           itoa(arguments( vl, int ), tmp, 2);
+		           strcpy(&buff[j], tmp);
+		           j += strlen(tmp);
+		           break;
+		        }
+        	}
+     	} 
+     	else 
+	    {
+	       	buff[j] =str[i];
+	       	j++;
+	    }
+	    i++;
+	} 
+    fwrite(buff, j, 1, stdout); 
+    end(vl);
+    return j;
+ }
+
+
+
+
+int main(int argc, char *argv[])
+{
+	char c;
+	int c2;
+	int c3;
+	int c4;
+	int i;
+	int h;
+	int ret = 0;
+	int ret2 =0;
+	int ret3=0;
+	ret = myscanf("%c %d %d %d", &c,&c2,&c3,&c4);
+	myprintf("C = %c, I = %d, H = %x, B = %b \n", c, c2, c3,c4);
+	return 0;
+}

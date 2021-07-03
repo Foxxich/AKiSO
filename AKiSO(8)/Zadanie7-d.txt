@@ -1,0 +1,29 @@
+section .data
+  scan: db "%lf", 0
+  print: db "%lf", 10, 0
+  num dd 10
+
+section .bss
+  i resb 0
+  out resd 0
+  
+section .text
+  global main
+  extern printf
+  extern scanf
+
+main:
+  finit
+  fldl2e               ; st: log2(e)
+  fld num              ; st: log2(e) num
+  fyl2x                ; st: ln(num)
+  fstp out             ; store to out and pop
+  
+printresult:
+  push out
+  push print
+  call printf
+  
+end:
+  mov eax, 1
+  int 0x80

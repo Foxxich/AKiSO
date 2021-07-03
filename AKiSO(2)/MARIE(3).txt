@@ -1,0 +1,68 @@
+Clear
+Input
+Store X //1st number
+Input
+Store Y //2nd number
+
+CheckXpositive,  Load X
+         Skipcond 000
+         Jump CheckXiY //if x is positive
+         Jump NegativeX //if x is negative
+
+CheckXiY,  Load X /checkup if x>y
+      Subt Y
+        Skipcond 800
+        Jump YBigger //if y>x
+        Jump YCheck //if x>y
+        
+YBigger,  Load X
+        output
+
+YCheck, Load Y
+        Skipcond 000
+        Jump YPlus //if y is positive
+        Jump YMinus //if y is negative
+
+YPlus,    Load X 
+          Subt Y
+          Skipcond 800
+          Jump END4X //if x is < y after operation
+If,       Load X //if x is still > than y
+         Subt Y
+          Store X
+          Output 
+          Jump YPlus
+         
+END4X,   Load X 
+        Subt X
+         Halt  
+  
+NegativeX,  Load X
+          Add Y
+          Store X
+           Output
+          Jump ZeroX //check if 0>x
+
+ZeroX,  Load zero
+      Subt X
+        Skipcond 800  
+        Jump END4NX // if x>0
+    Jump NegativeX // if x<0
+END4NX,  Halt
+
+YMinus, Load X
+        Add Y
+        Store X
+        Skipcond 800
+        Jump END4NY  //if x>0
+        Jump YMinus //if x<=0
+        
+END4NY,  Output
+        Halt
+
+X, DEC 0
+Y, DEC 0
+one, DEC 1
+negflag, DEC 0
+result, DEC 0
+zero, DEC 0
